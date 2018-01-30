@@ -32,6 +32,12 @@ module.exports = function(config) {
         'https://cdn.bootcss.com/jquery/2.2.4/jquery.js': ['coverage']
     },
 
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -62,7 +68,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: process.env.TRAVIS ? ['Chrome_travis_ci']: ['Chrome'],
 
 
     // Continuous Integration mode
